@@ -24,5 +24,18 @@ public class post {
 	public String toString(){
 		return date + " " + content;
 	}
-	
+	public boolean equals(Object o){
+		boolean ans = true;
+		if(o == null){
+			return false;
+		}
+		if(!this.getClass().equals(o.getClass())){
+			return false;
+		}
+		post Post = (post) o ;
+		if(!o.toString().equals(this.toString())){
+			return false;
+		}
+		return ans;
+	}
 }
