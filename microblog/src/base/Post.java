@@ -24,7 +24,7 @@ public class Post {
 	}
 	
 	public String toString(){
-		return user + "\n" + date + "\n" + content;
+		return user.toString() + "\n" + date + "\n" + content;
 	}
 	public boolean equals(Object o){
 		boolean ans = true;
