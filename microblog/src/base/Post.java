@@ -2,15 +2,17 @@ package base;
 
 import java.util.Date;
 
-public class post {
+public class Post {
 
 	private Date date;
 	private String content;
+	private User user;
 	
 	//constructer
-	public post(Date date, String content){
+	public Post(Date date, String content, User user){
 		this.date = date;
 		this.content = content;
+		this.user = user;
 	}
 	
 	public String getcontent(){
@@ -32,8 +34,8 @@ public class post {
 		if(!this.getClass().equals(o.getClass())){
 			return false;
 		}
-		post Post = (post) o ;
-		if(!o.toString().equals(this.toString())){
+		Post post = (Post) o ;
+		if(post.toString().equals(this.toString())){
 			return false;
 		}
 		return ans;
