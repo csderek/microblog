@@ -50,6 +50,12 @@ public class Post {
 			return true;
 		}
 	}
+	public int hashcode(){
+		int hashcode =0;
+		date.hashCode();
+		content.hashCode();
+		return hashcode;
+	}
 	public boolean equals(Object o){
 		boolean ans = true;
 		if(o == null){
