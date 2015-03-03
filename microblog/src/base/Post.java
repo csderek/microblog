@@ -40,7 +40,7 @@ public class Post {
 	}
 	
 	public String toString(){
-		return user.toString() + "\n" + date + "\n" + content;
+		return /*user.toString()*/  date + "\n" + content;
 	}
 	
 	public boolean contains(String str){
@@ -50,24 +50,47 @@ public class Post {
 			return true;
 		}
 	}
-	public int hashcode(){
-		int hashcode =0;
-		date.hashCode();
-		content.hashCode();
-		return hashcode;
+
+	public Post(Date date, String content) {
+		super();
+		this.date = date;
+		this.content = content;
 	}
-	public boolean equals(Object o){
-		boolean ans = true;
-		if(o == null){
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		if(!this.getClass().equals(o.getClass())){
+		if (getClass() != obj.getClass())
 			return false;
-		}
-		Post post = (Post) o ;
-		if(post.toString().equals(this.toString())){
+		Post other = (Post) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
 			return false;
-		}
-		return ans;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
 	}
 }
