@@ -1,6 +1,7 @@
 package blog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import base.Post;
 import base.User;
@@ -52,6 +53,14 @@ public class Blog {
 		}
 	}
 
+	public ArrayList<Post> getAllPosts() {
+		return allPosts;
+	}
+
+	public void setAllPosts(ArrayList<Post> allPosts) {
+		this.allPosts = allPosts;
+	}
+
 	@Override
 	public String toString() {
 		return "Blog [allPosts=" + allPosts + "]";
@@ -87,6 +96,18 @@ public class Blog {
 		} else if (!user.equals(other.user))
 			return false;
 		return true;
+	}
+	public void search(int month, String someone){
+		Calendar cal = Calendar.getInstance();
+		for(Post p : allPosts){
+			cal.setTime(p.getdate());
+			int postMonth = cal.get(Calendar.MONTH);
+			if((postMonth+1) == month){
+				if(p.getcontent().contains(someone)){
+					System.out.println(p.toString());
+				}
+			}
+		}
 	}
 	
 }

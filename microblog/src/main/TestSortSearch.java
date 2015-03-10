@@ -1,4 +1,4 @@
-package test;
+package main;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,7 +69,7 @@ public class TestSortSearch {
 		System.out
 				.println("\n***Search posts created in Feburary and mentioned Amy***");
 		Blog blog = new Blog(userA);
-		blog.setPosts(allposts);
+		blog.setAllPosts(allposts);
 		blog.search(2, "Amy");
 
 	}

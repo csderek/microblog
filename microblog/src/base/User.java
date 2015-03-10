@@ -1,6 +1,6 @@
 package base;
 
-public class User {
+public class User implements Comparable<User>{
 	private int id;
 	private String username;
 	private String useremail;
@@ -74,5 +74,18 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(User u) {
+		// TODO Auto-generated method stub
+		if (this.id > u.id){
+			return 1;
+		}else if(this.id < u.id){
+			return -1;
+		}else{
+			return 0;
+		}
+		
 	}
 }
