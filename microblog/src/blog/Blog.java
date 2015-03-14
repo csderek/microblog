@@ -136,7 +136,7 @@ public class Blog implements Serializable{
 		try {
 			FileInputStream fileStream = new FileInputStream(filepath);
 			ObjectInputStream os = new ObjectInputStream(fileStream);
-			Post post = (Post) os.readObject();
+			allPosts = (ArrayList<Post>) os.readObject();
 			os.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
