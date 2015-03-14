@@ -1,12 +1,19 @@
 package blog;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import base.Post;
 import base.User;
 
-public class Blog {
+public class Blog implements Serializable{
 	private User user;
 	private ArrayList<Post> allPosts = new ArrayList<Post>();
 
@@ -110,4 +117,37 @@ public class Blog {
 		}
 	}
 	
+	public void save(String filepath){
+		 try {
+			FileOutputStream fs = new  FileOutputStream(filepath);
+			ObjectOutputStream os = new  ObjectOutputStream(fs);
+			os.writeObject(allPosts);
+			os.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void load(String filepath){
+		try {
+			FileInputStream fileStream = new FileInputStream(filepath);
+			ObjectInputStream os = new ObjectInputStream(fileStream);
+			Post post = (Post) os.readObject();
+			os.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Wait!There is something wrong. I cannot find the file.");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
