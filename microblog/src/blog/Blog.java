@@ -121,7 +121,7 @@ public class Blog implements Serializable{
 		 try {
 			FileOutputStream fs = new  FileOutputStream(filepath);
 			ObjectOutputStream os = new  ObjectOutputStream(fs);
-			os.writeObject(allPosts);
+			os.writeObject(this);
 			os.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -136,7 +136,10 @@ public class Blog implements Serializable{
 		try {
 			FileInputStream fileStream = new FileInputStream(filepath);
 			ObjectInputStream os = new ObjectInputStream(fileStream);
-			allPosts = (ArrayList<Post>) os.readObject();
+			Blog blog = (Blog) os.readObject();
+			this.user = blog.user;
+			this.allPosts = blog.allPosts;
+			
 			os.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
