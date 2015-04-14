@@ -41,7 +41,7 @@ public class Post implements Comparable<Post>, Serializable{
 	}
 	
 	public String toString(){
-		return /*user.toString()*/  date + "\n" + content;
+		return /*user.toString()*/  date + "\n" + content + "\n";
 	}
 	
 	public boolean contains(String str){
